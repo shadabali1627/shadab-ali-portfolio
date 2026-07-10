@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { FileDown } from 'lucide-react';
+import { NavbarMobile } from './navbar-mobile';
 
 interface NavbarProps {
   settings?: any;
@@ -51,6 +52,8 @@ export function Navbar({ settings, resumeData, profile }: NavbarProps) {
 
           <a href="#contact" className="px-5 py-2 rounded-full font-semibold text-sm bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:scale-[1.02] transition-all duration-200">Contact Me</a>
         </nav>
+
+        <NavbarMobile resumeData={resumeData} />
       </div>
     </header>
   );

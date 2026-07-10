@@ -34,18 +34,18 @@ export function HeroSection({ heroData, resumeData, profile }: HeroSectionProps)
 
 
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-6 items-center w-full mt-10">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-center w-full mt-10">
         {/* Left column */}
-        <div className="col-span-12 md:col-span-7 flex flex-col gap-6">
+        <div className="col-span-1 md:col-span-7 flex flex-col gap-6 text-center md:text-left items-center md:items-start">
           <div className="flex flex-col gap-2">
-            <h2 className="text-2xl md:text-3xl font-medium text-[#06b6d4]">
+            <h2 className="text-xl md:text-2xl font-medium text-[#06b6d4]">
               Hi, I'm {profile?.name || "there"} 👋
             </h2>
-            <h1 className="text-[50px] md:text-[72px] lg:text-[80px] font-black tracking-[-0.03em] leading-[1.1] text-white">
+            <h1 className="text-display font-black text-white">
               {heading}
             </h1>
           </div>
-          <p className="text-[18px] text-[#94a3b8] leading-[1.7] max-w-lg">
+          <p className="text-base md:text-lg text-[#94a3b8] leading-[1.7] max-w-lg">
             {subheading}
           </p>
           
@@ -77,7 +77,7 @@ export function HeroSection({ heroData, resumeData, profile }: HeroSectionProps)
         </div>
 
         {/* Right column */}
-        <div className="col-span-12 md:col-span-5 flex flex-col gap-4 mt-12 md:mt-0 relative justify-center items-center">
+        <div className="col-span-1 md:col-span-5 flex flex-col gap-4 mt-8 md:mt-0 relative justify-center items-center">
           {profile?.profileImage && (
             <ProfileImage 
               image={profile.profileImage} 
