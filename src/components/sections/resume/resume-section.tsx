@@ -68,7 +68,7 @@ export function ResumeSection({ data }: ResumeSectionProps) {
 
         {/* Inline PDF Viewer */}
         {data.resumeFileUrl && (
-          <div className="block w-full h-[500px] md:h-[800px] mb-16 rounded-2xl border border-white/[0.07] overflow-hidden bg-[#0f0f13] shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+          <div className="hidden md:block w-full h-[800px] mb-16 rounded-2xl border border-white/[0.07] overflow-hidden bg-[#0f0f13] shadow-[0_0_40px_rgba(0,0,0,0.5)]">
             <iframe src={`${data.resumeFileUrl}#toolbar=0&view=Fit`} className="w-full h-full border-none" title="Resume PDF" />
           </div>
         )}
