@@ -53,7 +53,7 @@ export const getAllExperience = groq`
 `;
 
 export const getAllSkills = groq`
-  *[_type == "skill"] {
+  *[_type == "skill"] | order(order asc) {
     category,
     items
   }
