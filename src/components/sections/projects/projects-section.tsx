@@ -29,7 +29,7 @@ export function ProjectsSection({ data }: ProjectsSectionProps) {
       {/* Ambient Glow */}
       <div className="absolute left-0 top-1/4 w-[500px] h-[500px] bg-accent-indigo/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-container mx-auto px-6 relative z-10">
+      <div className="max-w-container mx-auto px-4 md:px-6 relative z-10">
         <div className="mb-12 flex justify-between items-end">
           <div>
             <SectionLabel number="004" label="FEATURED WORK" />
@@ -50,7 +50,7 @@ export function ProjectsSection({ data }: ProjectsSectionProps) {
                 className="flex flex-col md:flex-row gap-0 overflow-hidden p-0 relative group hover:-translate-y-1 hover:border-accent-indigo/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-300"
               >
                 {/* Image Section */}
-                <div className="w-full md:w-1/2 bg-bg-surface2 min-h-[300px] md:min-h-[400px] relative overflow-hidden">
+                <div className="w-full md:w-1/2 bg-bg-surface2 min-h-[200px] sm:min-h-[300px] md:min-h-[400px] relative overflow-hidden">
                   {project.imageUrl ? (
                     <>
                       <img src={project.imageUrl} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -65,7 +65,7 @@ export function ProjectsSection({ data }: ProjectsSectionProps) {
                 </div>
 
                 {/* Content Section */}
-                <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center gap-6 bg-gradient-to-b from-transparent to-bg-surface2/50">
+                <div className="w-full md:w-1/2 p-5 sm:p-8 md:p-12 flex flex-col justify-center gap-6 bg-gradient-to-b from-transparent to-bg-surface2/50">
                   <div className="flex flex-wrap gap-2">
                     {project.tags?.map((tag: string, tagIdx: number) => (
                       <Badge key={tagIdx} variant="indigo" className="group-hover:bg-accent-indigo/20 transition-colors">
@@ -85,18 +85,18 @@ export function ProjectsSection({ data }: ProjectsSectionProps) {
                     ))}
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-4">
+                  <div className="mt-4 flex flex-col sm:flex-row gap-3 md:gap-4">
                     {project.url && (
-                      <a href={project.url} target="_blank" rel="noopener noreferrer">
-                        <Button variant="secondary" className="flex items-center gap-2 group/demo">
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                        <Button variant="secondary" className="w-full sm:w-auto flex items-center justify-center gap-2 group/demo">
                           View Demo
                           <ExternalLink className="w-4 h-4 group-hover/demo:-translate-y-0.5 group-hover/demo:translate-x-0.5 transition-transform" />
                         </Button>
                       </a>
                     )}
                     {project.repository && (
-                      <a href={project.repository} target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" className="flex items-center gap-2 group/code">
+                      <a href={project.repository} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                        <Button variant="ghost" className="w-full sm:w-auto flex items-center justify-center gap-2 group/code">
                           Source Code
                           <Code2 className="w-4 h-4 group-hover/code:scale-110 transition-transform" />
                         </Button>

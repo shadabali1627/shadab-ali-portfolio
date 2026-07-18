@@ -30,9 +30,9 @@ const config: Config = {
         mono: ['JetBrains Mono', 'monospace'],
       },
       fontSize: {
-        'display': ['clamp(3rem, 6vw, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
-        'h1':      ['clamp(2.25rem, 5vw, 3.5rem)', { lineHeight: '1.1',  letterSpacing: '-0.02em' }],
-        'h2':      ['clamp(1.75rem, 4vw, 2.5rem)', { lineHeight: '1.2',  letterSpacing: '-0.01em' }],
+        'display': ['clamp(2.5rem, 8vw, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        'h1':      ['clamp(2rem, 6vw, 3.5rem)', { lineHeight: '1.1',  letterSpacing: '-0.02em' }],
+        'h2':      ['clamp(1.5rem, 5vw, 2.5rem)', { lineHeight: '1.2',  letterSpacing: '-0.01em' }],
         'h3':      ['clamp(1.25rem, 3vw, 1.75rem)', { lineHeight: '1.3'  }],
         'h4':      ['clamp(1rem, 2vw, 1.25rem)', { lineHeight: '1.4'  }],
         'label':   ['11px', { lineHeight: '1.5',  letterSpacing: '0.1em'  }],

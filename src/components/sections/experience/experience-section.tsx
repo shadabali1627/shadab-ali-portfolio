@@ -26,7 +26,7 @@ const parseDescription = (desc: string) => {
 export function ExperienceSection({ data }: ExperienceSectionProps) {
   return (
     <section id="experience" className="py-section bg-bg-page relative border-t border-border-default">
-      <div className="max-w-container mx-auto px-6">
+      <div className="max-w-container mx-auto px-4 md:px-6">
         <div className="mb-12">
           <SectionLabel label="CAREER" />
           <h2 className="text-h2 font-display text-text-primary mt-4">
@@ -34,7 +34,7 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
           </h2>
         </div>
 
-        <div className="relative ml-4 md:ml-6 pl-8 md:pl-12 py-4 flex flex-col gap-12">
+        <div className="relative ml-4 md:ml-6 pl-6 md:pl-12 py-4 flex flex-col gap-12">
           {/* Gradient timeline line */}
           <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent-indigo via-accent-violet to-transparent opacity-50" />
           
@@ -45,9 +45,9 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
             return (
               <div key={idx} className="relative group">
                 {/* Timeline Node */}
-                <div className={`absolute -left-[36.5px] md:-left-[52.5px] top-6 h-4 w-4 rounded-full border-2 border-bg-page z-10 transition-colors duration-300 ${isPresent ? 'bg-accent-indigo shadow-[0_0_15px_rgba(99,102,241,0.6)] animate-pulse' : 'bg-text-muted group-hover:bg-accent-violet group-hover:shadow-[0_0_10px_rgba(168,85,247,0.4)]'}`} />
+                <div className={`absolute -left-[31.5px] md:-left-[55.5px] top-6 h-4 w-4 rounded-full border-2 border-bg-page z-10 transition-colors duration-300 ${isPresent ? 'bg-accent-indigo shadow-[0_0_15px_rgba(99,102,241,0.6)] animate-pulse' : 'bg-text-muted group-hover:bg-accent-violet group-hover:shadow-[0_0_10px_rgba(168,85,247,0.4)]'}`} />
                 
-                <Card className="p-6 md:p-8">
+                <Card className="p-5 md:p-8">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                     <div>
                       <h3 className="text-2xl font-display text-text-primary mb-2">{exp.role}</h3>

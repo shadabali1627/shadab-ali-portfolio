@@ -34,7 +34,7 @@ export function HeroSection({ heroData, resumeData, profile }: HeroSectionProps)
 
 
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-center w-full mt-10">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-center w-full mt-10">
         {/* Left column */}
         <div className="col-span-1 md:col-span-7 flex flex-col gap-6 text-center md:text-left items-center md:items-start">
           <div className="flex flex-col gap-2">
