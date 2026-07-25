@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { inter, jetBrainsMono } from "@/lib/fonts";
+import { ChatWidget } from "@/components/ui/chat-widget";
 
 export const metadata = {
   title: 'AI Engineer Portfolio',
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${jetBrainsMono.variable}`}>
       <body className="bg-bg-page text-text-primary antialiased">
         {children}
+        <ChatWidget />
       </body>
     </html>
   );

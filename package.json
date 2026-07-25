@@ -18,9 +18,12 @@
     "supabase:types": "supabase gen types typescript --local > src/supabase/types.ts"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^4.0.13",
+    "@ai-sdk/react": "^4.0.40",
     "@sanity/image-url": "^2.1.1",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.108.2",
+    "ai": "^7.0.37",
     "lucide-react": "^1.21.0",
     "next": "^16.2.9",
     "next-sanity": "^13.1.1",
