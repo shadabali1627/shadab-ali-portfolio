@@ -206,8 +206,8 @@ export function ChatWidget() {
               {[
                 "Tell me about Shadab.",
                 "What are his core skills?",
-                "What is his experience in AI?",
                 "Can you show me his recent projects?",
+                "How can I contact Shadab?",
               ].map((question, i) => (
                 <button
                   key={i}
