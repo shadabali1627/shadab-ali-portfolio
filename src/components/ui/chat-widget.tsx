@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageSquare, Minus, RefreshCcw, Send, User, Bot, Loader2 } from 'lucide-react';
+import { MessageSquare, Minus, RefreshCcw, Send, Bot, Loader2, X } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 
@@ -12,6 +12,7 @@ type Message = {
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +27,27 @@ export function ChatWidget() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    const showTimer = setTimeout(() => {
+      setShowGreeting(true);
+    }, 3000);
+
+    const hideTimer = setTimeout(() => {
+      setShowGreeting(false);
+    }, 10000);
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      setShowGreeting(false);
+    }
+  }, [isOpen]);
 
   const handleNewChat = () => {
     setMessages([]);
@@ -82,13 +104,39 @@ export function ChatWidget() {
 
   if (!isOpen) {
     return (
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary text-white shadow-glow transition-transform hover:scale-110 active:scale-95"
-        aria-label="Open chat"
-      >
-        <MessageSquare className="h-6 w-6" />
-      </button>
+      <>
+        {/* Greeting Bubble */}
+        <div
+          className={`fixed bottom-9 right-24 z-50 flex items-center gap-2 rounded-2xl rounded-br-sm border border-border-default bg-bg-surface1 px-4 py-3 shadow-card transition-all duration-500 ${
+            showGreeting
+              ? 'translate-y-0 opacity-100 pointer-events-auto'
+              : 'translate-y-4 opacity-0 pointer-events-none'
+          }`}
+        >
+          <span className="text-sm font-medium text-text-primary whitespace-nowrap">
+            👋 Ask me about Shadab.
+          </span>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowGreeting(false);
+            }}
+            className="ml-1 rounded-full p-1 text-text-muted hover:bg-bg-surface2 hover:text-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-accent-indigo"
+            aria-label="Dismiss greeting"
+          >
+            <X className="h-3.5 w-3.5" />
+          </button>
+        </div>
+
+        {/* Chat Button */}
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary text-white shadow-glow transition-transform hover:scale-110 active:scale-95"
+          aria-label="Open chat"
+        >
+          <MessageSquare className="h-6 w-6" />
+        </button>
+      </>
     );
   }
 
