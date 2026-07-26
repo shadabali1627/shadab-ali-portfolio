@@ -107,21 +107,30 @@ export function ChatWidget() {
       <>
         {/* Greeting Bubble */}
         <div
-          className={`fixed bottom-[4.5rem] right-[5.5rem] z-50 flex items-center gap-2 rounded-2xl rounded-br-sm border border-white/10 bg-bg-surface1/80 backdrop-blur-md px-4 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-500 origin-bottom-right ${
+          className={`fixed bottom-[5.5rem] right-6 z-50 flex items-center gap-3 rounded-full border border-white/10 bg-bg-surface1/95 backdrop-blur-xl px-4 py-2.5 shadow-2xl transition-all duration-500 origin-bottom-right cursor-pointer hover:bg-bg-surface2/95 ${
             showGreeting
-              ? 'scale-100 opacity-100 pointer-events-auto'
-              : 'scale-90 opacity-0 pointer-events-none'
+              ? 'translate-y-0 scale-100 opacity-100 pointer-events-auto'
+              : 'translate-y-4 scale-90 opacity-0 pointer-events-none'
           }`}
+          onClick={() => setIsOpen(true)}
         >
-          <span className="text-sm font-medium text-white whitespace-nowrap drop-shadow-sm">
-            ✨ Chat with Shadab's AI Assistant
-          </span>
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-primary shadow-inner">
+            <Bot className="h-4 w-4 text-white" />
+          </div>
+          <div className="flex flex-col pr-2">
+            <span className="text-[13px] font-semibold text-white leading-tight">
+              AI Assistant
+            </span>
+            <span className="text-[12px] text-white/70 leading-tight">
+              Ask me about Shadab!
+            </span>
+          </div>
           <button
             onClick={(e) => {
               e.stopPropagation();
               setShowGreeting(false);
             }}
-            className="ml-1 rounded-full p-1 text-white/70 hover:bg-white/10 hover:text-white transition-colors focus:outline-none"
+            className="ml-1 rounded-full p-1.5 text-white/50 hover:bg-white/10 hover:text-white transition-colors focus:outline-none"
             aria-label="Dismiss greeting"
           >
             <X className="h-3.5 w-3.5" />
