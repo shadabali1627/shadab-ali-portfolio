@@ -53,13 +53,11 @@ export function ChatWidget() {
     setMessages([]);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  const sendMessage = async (content: string) => {
+    if (!content.trim() || isLoading) return;
 
-    const newMessages: Message[] = [...messages, { id: Date.now().toString(), role: 'user', content: input }];
+    const newMessages: Message[] = [...messages, { id: Date.now().toString(), role: 'user', content }];
     setMessages(newMessages);
-    setInput('');
     setIsLoading(true);
 
     try {
@@ -100,6 +98,13 @@ export function ChatWidget() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const currentInput = input;
+    setInput('');
+    await sendMessage(currentInput);
   };
 
   if (!isOpen) {
@@ -189,13 +194,31 @@ export function ChatWidget() {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-bg-surface2 scrollbar-track-transparent">
         {messages.length === 0 ? (
-          <div className="flex h-full flex-col items-center justify-center space-y-4 text-center opacity-70">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/5">
+          <div className="flex h-full flex-col items-center justify-center pb-8 pt-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/5 mb-4">
               <Sparkles className="h-6 w-6 text-accent-indigo" />
             </div>
-            <p className="text-sm text-text-secondary max-w-[80%]">
+            <p className="text-sm text-text-secondary text-center mb-8 max-w-[85%]">
               Hi! Ask me anything about Shadab's experience, projects, or skills.
             </p>
+            
+            <div className="flex w-full flex-col gap-2">
+              {[
+                "Tell me about Shadab.",
+                "What are his core skills?",
+                "What is his experience in AI?",
+                "Can you show me his recent projects?",
+              ].map((question, i) => (
+                <button
+                  key={i}
+                  onClick={() => sendMessage(question)}
+                  className="w-full text-left text-[13px] text-text-secondary bg-bg-surface2/40 hover:bg-bg-surface2 hover:text-text-primary rounded-xl px-4 py-3 border border-white/5 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-between group"
+                >
+                  <span>{question}</span>
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </button>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="flex flex-col space-y-4">
