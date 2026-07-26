@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageSquare, Minus, RefreshCcw, Send, Bot, Loader2, X } from 'lucide-react';
+import { Minus, RefreshCcw, Send, Bot, Loader2, X, Sparkles } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 
@@ -107,21 +107,21 @@ export function ChatWidget() {
       <>
         {/* Greeting Bubble */}
         <div
-          className={`fixed bottom-9 right-24 z-50 flex items-center gap-2 rounded-2xl rounded-br-sm border border-border-default bg-bg-surface1 px-4 py-3 shadow-card transition-all duration-500 ${
+          className={`fixed bottom-[4.5rem] right-[5.5rem] z-50 flex items-center gap-2 rounded-2xl rounded-br-sm border border-white/10 bg-bg-surface1/80 backdrop-blur-md px-4 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-500 origin-bottom-right ${
             showGreeting
-              ? 'translate-y-0 opacity-100 pointer-events-auto'
-              : 'translate-y-4 opacity-0 pointer-events-none'
+              ? 'scale-100 opacity-100 pointer-events-auto'
+              : 'scale-90 opacity-0 pointer-events-none'
           }`}
         >
-          <span className="text-sm font-medium text-text-primary whitespace-nowrap">
-            👋 Ask me about Shadab.
+          <span className="text-sm font-medium text-white whitespace-nowrap drop-shadow-sm">
+            ✨ Chat with Shadab's AI Assistant
           </span>
           <button
             onClick={(e) => {
               e.stopPropagation();
               setShowGreeting(false);
             }}
-            className="ml-1 rounded-full p-1 text-text-muted hover:bg-bg-surface2 hover:text-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-accent-indigo"
+            className="ml-1 rounded-full p-1 text-white/70 hover:bg-white/10 hover:text-white transition-colors focus:outline-none"
             aria-label="Dismiss greeting"
           >
             <X className="h-3.5 w-3.5" />
@@ -133,26 +133,28 @@ export function ChatWidget() {
           onClick={() => setIsOpen(true)}
           onMouseEnter={() => setShowGreeting(true)}
           onMouseLeave={() => setShowGreeting(false)}
-          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary text-white shadow-glow transition-transform hover:scale-110 active:scale-95"
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary text-white shadow-[0_0_20px_rgba(124,58,237,0.5)] transition-all hover:scale-110 active:scale-95 group"
           aria-label="Open chat"
         >
-          <MessageSquare className="h-6 w-6" />
+          <div className="absolute inset-0 rounded-full bg-accent-purple/40 animate-ping opacity-75"></div>
+          <Sparkles className="h-6 w-6 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
         </button>
       </>
     );
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex h-[500px] max-h-[80vh] w-[350px] flex-col overflow-hidden rounded-card border border-border-default bg-bg-surface1 shadow-card-hover transition-all duration-300 sm:w-[400px]">
+    <div className="fixed bottom-6 right-6 z-50 flex h-[500px] max-h-[80vh] w-[350px] flex-col overflow-hidden rounded-card border border-white/10 bg-bg-surface1/95 backdrop-blur-xl shadow-2xl transition-all duration-300 sm:w-[400px]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-border-default bg-bg-surface2 px-4 py-3">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-primary">
-            <Bot className="h-4 w-4 text-white" />
+      <div className="flex items-center justify-between border-b border-white/5 bg-gradient-to-r from-bg-surface2 to-bg-surface1 px-4 py-3">
+        <div className="flex items-center gap-3">
+          <div className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-primary shadow-glow">
+            <Sparkles className="h-4 w-4 text-white" />
+            <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-bg-surface2 bg-green-500"></span>
           </div>
           <div>
-            <h3 className="font-sans text-sm font-semibold text-text-primary">Chat with Shadab</h3>
-            <p className="font-sans text-xs text-text-secondary">AI Assistant</p>
+            <h3 className="font-sans text-sm font-semibold text-white drop-shadow-sm">Chat with Shadab</h3>
+            <p className="font-sans text-[11px] text-white/60">AI Assistant • Online</p>
           </div>
         </div>
         <div className="flex items-center gap-1">
@@ -176,9 +178,11 @@ export function ChatWidget() {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-bg-surface2 scrollbar-track-transparent">
         {messages.length === 0 ? (
-          <div className="flex h-full flex-col items-center justify-center space-y-3 text-center opacity-70">
-            <Bot className="h-10 w-10 text-accent-indigo" />
-            <p className="text-sm text-text-secondary">
+          <div className="flex h-full flex-col items-center justify-center space-y-4 text-center opacity-70">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/5">
+              <Sparkles className="h-6 w-6 text-accent-indigo" />
+            </div>
+            <p className="text-sm text-text-secondary max-w-[80%]">
               Hi! Ask me anything about Shadab's experience, projects, or skills.
             </p>
           </div>
@@ -217,9 +221,10 @@ export function ChatWidget() {
             ))}
             {isLoading && messages[messages.length - 1]?.role === 'user' && (
               <div className="flex w-full justify-start">
-                <div className="flex max-w-[85%] items-center gap-2 rounded-2xl rounded-tl-sm border border-border-default bg-bg-surface2 px-4 py-3 text-sm text-text-secondary">
-                  <Loader2 className="h-4 w-4 animate-spin text-accent-indigo" />
-                  <span>Thinking...</span>
+                <div className="flex max-w-[85%] items-center gap-1.5 rounded-2xl rounded-tl-sm border border-white/5 bg-bg-surface2 px-4 py-3 shadow-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-text-secondary animate-bounce [animation-delay:-0.3s]"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-text-secondary animate-bounce [animation-delay:-0.15s]"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-text-secondary animate-bounce"></div>
                 </div>
               </div>
             )}
