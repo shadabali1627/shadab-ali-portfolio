@@ -2,6 +2,7 @@
 
 import { MessageSquare, Minus, RefreshCcw, Send, User, Bot, Loader2 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 type Message = {
   id: string;
@@ -147,8 +148,19 @@ export function ChatWidget() {
                       : 'bg-bg-surface2 text-text-primary border border-border-default rounded-tl-sm'
                   }`}
                 >
-                  <div className="flex-1 leading-relaxed whitespace-pre-wrap">
-                    {message.content}
+                  <div className="flex-1 leading-relaxed break-words markdown-body text-[15px]">
+                    <ReactMarkdown
+                      components={{
+                        p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                        strong: ({ node, ...props }) => <strong className="font-semibold text-inherit" {...props} />,
+                        ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-2" {...props} />,
+                        ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-2" {...props} />,
+                        li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+                        a: ({ node, ...props }) => <a className="underline underline-offset-2 hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer" {...props} />,
+                      }}
+                    >
+                      {message.content}
+                    </ReactMarkdown>
                   </div>
                 </div>
               </div>
