@@ -138,16 +138,18 @@ export function ChatWidget() {
         </div>
 
         {/* Chat Button */}
-        <button
-          onClick={() => setIsOpen(true)}
-          onMouseEnter={() => setShowGreeting(true)}
-          onMouseLeave={() => setShowGreeting(false)}
-          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary text-white shadow-[0_0_20px_rgba(124,58,237,0.5)] transition-all hover:scale-110 active:scale-95 group"
-          aria-label="Open chat"
-        >
-          <div className="absolute inset-0 rounded-full bg-accent-purple/40 animate-ping opacity-75"></div>
-          <Sparkles className="h-6 w-6 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-        </button>
+        <div className="fixed bottom-6 right-6 z-50 animate-float">
+          <button
+            onClick={() => setIsOpen(true)}
+            onMouseEnter={() => setShowGreeting(true)}
+            onMouseLeave={() => setShowGreeting(false)}
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-primary text-white shadow-[0_0_20px_rgba(124,58,237,0.5)] transition-all hover:scale-110 active:scale-95 group relative"
+            aria-label="Open chat"
+          >
+            <div className="absolute inset-0 rounded-full bg-accent-purple/40 animate-ping opacity-75"></div>
+            <Sparkles className="h-7 w-7 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+          </button>
+        </div>
       </>
     );
   }
