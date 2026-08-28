@@ -77,10 +77,15 @@ export async function POST(req: Request) {
 
     // 3. Call AI Provider
     const result = streamText({
-      model: groq('llama-3.1-8b-instant'),
+      model: groq('qwen/qwen3.6-27b'),
       system: systemPrompt,
       messages,
       temperature: 0.5,
+      providerOptions: {
+        groq: {
+          reasoningFormat: 'hidden',
+        },
+      },
     });
 
     return result.toTextStreamResponse();
