@@ -13,36 +13,41 @@ interface HeroCtaRowProps {
 export function HeroCtaRow({ 
   resumeUrl, 
   resumeVersion,
-  primaryCtaText = "View Projects",
-  primaryCtaLink = "#projects",
-  secondaryCtaText = "Contact Me",
-  secondaryCtaLink = "#contact"
+  primaryCtaText,
+  primaryCtaLink,
+  secondaryCtaText,
+  secondaryCtaLink
 }: HeroCtaRowProps) {
+  const finalPrimaryText = (primaryCtaText && primaryCtaText.trim()) || "View Projects";
+  const finalPrimaryLink = (primaryCtaLink && primaryCtaLink.trim()) || "#projects";
+  const finalSecondaryText = (secondaryCtaText && secondaryCtaText.trim()) || "Contact Me";
+  const finalSecondaryLink = (secondaryCtaLink && secondaryCtaLink.trim()) || "#contact";
+
   return (
     <div className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start items-center gap-3.5 w-full">
       {/* Primary CTA */}
       <a
-        href={primaryCtaLink}
+        href={finalPrimaryLink}
         className="group relative inline-flex items-center justify-center px-6 py-3 rounded-full font-medium text-sm w-full sm:w-auto text-center
                    bg-gradient-to-r from-indigo-500 to-purple-600 text-white
                    shadow-[0_0_20px_rgba(99,102,241,0.35)] hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
                    hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 overflow-hidden"
       >
         <span className="relative z-10 flex items-center gap-2">
-          {primaryCtaText}
+          {finalPrimaryText}
           <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
         </span>
       </a>
 
       {/* Secondary CTA */}
       <a
-        href={secondaryCtaLink}
+        href={finalSecondaryLink}
         className="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium text-sm w-full sm:w-auto text-center
                    border border-white/10 bg-white/[0.03] backdrop-blur-md text-slate-200
                    hover:border-indigo-500/50 hover:bg-indigo-500/10 hover:text-white hover:scale-[1.02] active:scale-[0.98]
                    transition-all duration-200"
       >
-        {secondaryCtaText}
+        {finalSecondaryText}
       </a>
 
       {/* Resume download — URL from CMS */}

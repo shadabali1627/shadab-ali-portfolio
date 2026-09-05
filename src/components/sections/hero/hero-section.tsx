@@ -70,10 +70,10 @@ export function HeroSection({ heroData, resumeData, profile }: HeroSectionProps)
               <HeroCtaRow 
                 resumeUrl={resumeData?.resumeFileUrl} 
                 resumeVersion={resumeData?.resumeVersion} 
-                primaryCtaText={heroData?.primaryCtaText}
-                primaryCtaLink={heroData?.primaryCtaLink}
-                secondaryCtaText={heroData?.secondaryCtaText}
-                secondaryCtaLink={heroData?.secondaryCtaLink}
+                primaryCtaText={heroData?.primaryCtaText || "View Projects"}
+                primaryCtaLink={heroData?.primaryCtaLink || "#projects"}
+                secondaryCtaText={heroData?.secondaryCtaText || "Contact Me"}
+                secondaryCtaLink={heroData?.secondaryCtaLink || "#contact"}
               />
             </div>
 
