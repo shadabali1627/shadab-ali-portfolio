@@ -23,75 +23,104 @@ interface HeroSectionProps {
 export function HeroSection({ heroData, resumeData, profile }: HeroSectionProps) {
   const heading = heroData?.heading || "AI Engineer & Builder";
   const subheading = heroData?.subheading || "Building frontier technologies and intelligent systems.";
-  const terminalModules = heroData?.terminalModules || ["AI", "Web3", "Scale"];
   const socialLinks = profile?.socialLinks || [];
 
   return (
-    <section className="relative min-h-screen bg-[#050508] flex items-center overflow-hidden pt-16">
-      {/* Background radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_center,rgba(99,102,241,0.15),transparent_60%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-grain pointer-events-none" />
+    <section className="relative min-h-[92vh] bg-[#050508] flex items-center justify-center overflow-hidden pt-24 pb-16">
+      {/* Dynamic ambient mesh gradients */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-indigo-600/15 via-purple-600/10 to-cyan-500/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-grain pointer-events-none opacity-40" />
 
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 w-full">
+        {/* Bento Hero Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center">
+          {/* Left Hero Card / Content */}
+          <div className="lg:col-span-7 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
+            {/* Status Pill Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md shadow-sm">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+              </span>
+              <span className="text-xs font-mono font-medium text-slate-300">
+                Hi, I'm <span className="text-cyan-400 font-semibold">{profile?.name || "Shadab"}</span> 👋
+              </span>
+            </div>
 
+            {/* Display Headline with typography hierarchy */}
+            <div className="flex flex-col gap-3">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
+                <span className="block">{heading.split('&')[0]}</span>
+                {heading.includes('&') && (
+                  <span className="bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
+                    & {heading.split('&')[1]}
+                  </span>
+                )}
+              </h1>
+            </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-center w-full mt-10">
-        {/* Left column */}
-        <div className="col-span-1 md:col-span-7 flex flex-col gap-6 text-center md:text-left items-center md:items-start">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-xl md:text-2xl font-medium text-[#06b6d4]">
-              Hi, I'm {profile?.name || "there"} 👋
-            </h2>
-            <h1 className="text-display font-black text-white">
-              {heading}
-            </h1>
+            {/* Subheading */}
+            <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl font-normal">
+              {subheading}
+            </p>
+            
+            {/* Call to Action Row */}
+            <div className="mt-2 w-full">
+              <HeroCtaRow 
+                resumeUrl={resumeData?.resumeFileUrl} 
+                resumeVersion={resumeData?.resumeVersion} 
+                primaryCtaText={heroData?.primaryCtaText}
+                primaryCtaLink={heroData?.primaryCtaLink}
+                secondaryCtaText={heroData?.secondaryCtaText}
+                secondaryCtaLink={heroData?.secondaryCtaLink}
+              />
+            </div>
+
+            {/* Frosted Glass Social Pills */}
+            {socialLinks.length > 0 && (
+              <div className="flex items-center gap-2.5 mt-2 flex-wrap justify-center lg:justify-start">
+                <span className="text-xs font-mono text-slate-500 mr-1 uppercase tracking-wider">Connect:</span>
+                {socialLinks.map((link: any, idx: number) => {
+                  const platform = link.platform?.toLowerCase();
+                  return (
+                    <a
+                      key={idx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-slate-400 hover:text-white hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:scale-105 transition-all duration-200 text-xs font-mono"
+                    >
+                      {platform === 'github' && <Github className="w-3.5 h-3.5" />}
+                      {platform === 'linkedin' && <Linkedin className="w-3.5 h-3.5" />}
+                      {platform === 'twitter' && <Twitter className="w-3.5 h-3.5" />}
+                      <span>{link.platform}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
-          <p className="text-base md:text-lg text-[#94a3b8] leading-[1.7] max-w-lg">
-            {subheading}
-          </p>
-          
-          <div className="mt-4">
-            <HeroCtaRow 
-              resumeUrl={resumeData?.resumeFileUrl} 
-              resumeVersion={resumeData?.resumeVersion} 
-              primaryCtaText={heroData?.primaryCtaText}
-              primaryCtaLink={heroData?.primaryCtaLink}
-              secondaryCtaText={heroData?.secondaryCtaText}
-              secondaryCtaLink={heroData?.secondaryCtaLink}
-            />
-          </div>
 
-          <div className="flex items-center gap-4 mt-6">
-            {/* Social Icons */}
-            {socialLinks.map((link: any, idx: number) => {
-              const platform = link.platform?.toLowerCase();
-              return (
-                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="p-2 text-[#94a3b8] hover:text-white transition-colors">
-                  {platform === 'github' && <Github className="w-5 h-5" />}
-                  {platform === 'linkedin' && <Linkedin className="w-5 h-5" />}
-                  {platform === 'twitter' && <Twitter className="w-5 h-5" />}
-                  {!['github', 'linkedin', 'twitter'].includes(platform) && <span>{link.platform}</span>}
-                </a>
-              )
-            })}
+          {/* Right Bento Showcase Frame */}
+          <div className="lg:col-span-5 flex justify-center items-center relative">
+            {profile?.profileImage && (
+              <ProfileImage 
+                image={profile.profileImage} 
+                name={profile.name || "Profile"} 
+                availableForWork={profile.availableForWork} 
+              />
+            )}
           </div>
-        </div>
-
-        {/* Right column */}
-        <div className="col-span-1 md:col-span-5 flex flex-col gap-4 mt-8 md:mt-0 relative justify-center items-center">
-          {profile?.profileImage && (
-            <ProfileImage 
-              image={profile.profileImage} 
-              name={profile.name || "Profile"} 
-              availableForWork={profile.availableForWork} 
-            />
-          )}
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-70">
-        <span className="text-[10px] text-[#94a3b8] font-mono tracking-widest uppercase">Scroll</span>
-        <svg className="w-4 h-4 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+      {/* Modern subtle scroll indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity">
+        <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase">Scroll</span>
+        <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
+          <div className="w-1 h-2 rounded-full bg-indigo-400 animate-bounce" />
+        </div>
       </div>
     </section>
   );

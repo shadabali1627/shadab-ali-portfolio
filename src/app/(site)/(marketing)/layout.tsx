@@ -9,10 +9,12 @@ export default async function MarketingLayout({ children }: { children: React.Re
   const profile = await sanityFetch<any>({ query: getProfileQuery, tags: ['profile'] });
 
   return (
-    <>
+    <div className="relative min-h-screen bg-[#030305] text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200">
+      {/* Analog tactile grain texture overlay */}
+      <div className="fixed inset-0 pointer-events-none z-[60] bg-grain opacity-[0.03] mix-blend-overlay" />
       <Navbar settings={settings} resumeData={resumeData} profile={profile} />
-      <main>{children}</main>
+      <main className="relative z-10">{children}</main>
       <Footer settings={settings} />
-    </>
+    </div>
   );
 }

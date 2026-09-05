@@ -43,6 +43,7 @@ export const getAllExperience = groq`
   *[_type == "experience"] | order(startDate desc) {
     role,
     company,
+    companyUrl,
     "companyLogoUrl": companyLogo.asset->url,
     startDate,
     endDate,

@@ -33,3 +33,75 @@
   background-repeat: repeat;
   opacity: 0.03;
 }
+
+/* Ambient Pulse Ring for AI Launcher & Active Nodes */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 14px rgba(168, 85, 247, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Slide Up Drawer for Mobile Chat */
+@keyframes slide-up-drawer {
+  from {
+    transform: translateY(100%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slide-up-drawer {
+  animation: slide-up-drawer 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle organic float */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.animate-float {
+  animation: float-subtle 4s ease-in-out infinite;
+}
+
+/* Shimmer border reflection */
+@keyframes shimmer-border {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer-border 8s linear infinite;
+}
+
+/* Spring transition utilities */
+.transition-spring {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transition-spring-fast {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+

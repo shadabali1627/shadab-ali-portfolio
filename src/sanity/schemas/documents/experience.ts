@@ -24,6 +24,12 @@ export const experienceType = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'companyUrl',
+      title: 'Company Website URL',
+      type: 'url',
+      description: 'Official company website, e.g. https://stratskye.com or https://88hours.io',
+    }),
+    defineField({
       name: 'startDate',
       title: 'Start Date',
       type: 'date',

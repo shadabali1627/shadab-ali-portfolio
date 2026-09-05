@@ -1,36 +1,51 @@
 :root {
-  /* Backgrounds */
-  --color-bg-page:       #050508;
-  --color-bg-surface-1:  #0f0f13;
-  --color-bg-surface-2:  #16161d;
+  /* Canvas & Surfaces (Obsidian Craft) */
+  --color-bg-page:       #030305;
+  --color-bg-surface-1:  #0a0a0f;
+  --color-bg-surface-2:  #12121a;
+  --color-bg-glass:      rgba(10, 10, 15, 0.75);
+  --color-bg-glass-card: rgba(255, 255, 255, 0.025);
+  --color-bg-glass-nav:  rgba(5, 5, 8, 0.78);
 
-  /* Borders */
-  --color-border:        rgba(255,255,255,0.07);
-  --color-border-hover:  rgba(99,102,241,0.5);
+  /* Hairline Translucent Borders */
+  --color-border:        rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  --color-border-hover:  rgba(99, 102, 241, 0.4);
+  --color-border-glow:   rgba(99, 102, 241, 0.25);
+  --color-border-cyan:   rgba(6, 182, 212, 0.35);
 
-  /* Text */
-  --color-text-primary:  #f8fafc;
+  /* Typography Hierarchy */
+  --color-text-primary:  #ffffff;
   --color-text-secondary:#94a3b8;
-  --color-text-muted:    #475569;
+  --color-text-muted:    #64748b;
 
   /* Accents */
   --color-accent-indigo: #6366f1;
   --color-accent-cyan:   #06b6d4;
   --color-accent-violet: #a855f7;
-  --color-success:       #22c55e;
+  --color-success:       #10b981;
 
   /* Gradients */
-  --gradient-primary:   linear-gradient(135deg, #6366f1, #a855f7);
-  --gradient-secondary: linear-gradient(135deg, #06b6d4, #6366f1);
+  --gradient-primary:   linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
+  --gradient-glass:     linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+  --gradient-glow-radial: radial-gradient(circle at 50% 50%, rgba(99,102,241,0.12) 0%, transparent 70%);
 
-  /* Spacing */
+  /* Spring Physics & Motion Curves */
+  --ease-spring:        cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth:        cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing & Radii */
   --section-padding-y:   100px;
   --container-max-width: 1200px;
-  --card-radius:         16px;
-  --card-padding:        24px;
+  --card-radius:         24px;
+  --card-padding:        28px;
 
-  /* Shadows */
-  --shadow-card:         0 1px 3px rgba(0,0,0,0.4);
-  --shadow-card-hover:   0 0 24px rgba(99,102,241,0.15);
-  --shadow-glow-indigo:  0 0 40px rgba(99,102,241,0.2);
+  /* Shadows & Ambient Glows */
+  --shadow-card:         0 4px 24px -2px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover:   0 12px 36px -4px rgba(99, 102, 241, 0.2);
+  --shadow-glow-indigo:  0 0 40px rgba(99, 102, 241, 0.25);
+  --shadow-glow-pulse:   0 0 35px rgba(168, 85, 247, 0.45);
+  --shadow-nav-floating: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
 }
+
